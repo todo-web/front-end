@@ -1,3 +1,7 @@
+*{
+    --success: #a3d887;
+    --non-success: #e8de64;
+}
 #push{
     position: fixed;
     bottom: 30px;
@@ -103,12 +107,74 @@ article > section{
 
 form{
     background-color: #fff;
-    padding: 60px 50px;
+    padding: 50px;
 }
 
 input[type="text"]{
     height: 30px;
     width: 250px;
+    padding-left: 8px;
+    border: 0;
+    outline: solid var(--non-success) 3px;
+    transition-timing-function:  cubic-bezier(0, -0.14, 0, 2.16);
+
+}
+input[type="text"]:valid{
+    outline: solid var(--success) 3px;
 }
 
-/* label */
+
+
+input#title:valid ~ label[for="title"]{
+    transform: translateX(5px) translateY(-44.5px) scale(.8);
+    color: var(--success);
+}
+
+input#title:focus ~ label[for="title"]{
+    transform: translateX(5px) translateY(-44.5px) scale(.8);
+}
+
+
+input#des:valid ~ label[for="des"]{
+    transform: translateX(5px) translateY(-44.5px) scale(.8);
+    color: var(--success);
+}
+
+input#des:focus ~ label[for="des"]{
+    transform: translateX(5px) translateY(-44.5px) scale(.8);
+}
+
+form > label{
+    padding: 0 5px;
+    position: absolute;
+    color: var(--non-success);
+    transition: all .3s;
+    border-radius: 50px;
+    background-color: #fff;
+    transform: translateX(5px) translateY(-27px);
+
+}
+
+input[type="submit"]{
+    background-color: var(--non-success);
+    color: #fff;
+    border: 0;
+    outline: 0;
+    padding: 7px 10px;
+    cursor: pointer;
+    transition: all .5s;
+    transition-timing-function:  cubic-bezier(0, -0.14, 0, 2.16);
+}
+
+
+input[type="submit"]:hover{
+    transform: scale(1.05);
+}
+
+input[type="submit"]:active{
+    transform: scale(.98);
+}
+
+input#title:valid ~ input#des:valid ~ input{
+    background-color: var(--success);
+}

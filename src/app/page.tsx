@@ -1,6 +1,6 @@
 "use client"
 
-import { Box, Flex } from '@chakra-ui/react'
+import { Box, Flex, Text, Center } from '@chakra-ui/react'
 import Image from 'next/image'
 import Post from './comps/post'
 import Posts from './comps/posts'
@@ -46,26 +46,32 @@ export default function Home() {
         zIndex="-10" 
         w="100%"
         h="100%"
-
-        backdropFilter="blur(10px)"
-        bgColor="#00000050"
+        transition="10s"
+        backdropFilter={modal_v? "blur(10px)": "blur(0)"}
+        bgColor={modal_v? "#00000050": "00000000"}
         onClick={() => {modal_c(!modal_v)}}
         ></Box>
-        <form action="" onSubmit={(e) => {
+        <form action="" id="post-add" onSubmit={(e) => {
           e.preventDefault()
-          
+          modal_c(!modal_v)
           let a = [...posts_v]
           a.push({t: title.current?.value, d: des.current?.value})
           posts_c(a)
+          // title.current.val
         }}>
-          <input type="text" id="title" ref={title}/>
+          <Center
+            fontSize="30px"
+            fontWeight="600"
+            pb="30px"
+          >add</Center>
+          <input type="text" id="title" ref={title} required/>
           <br />
           <label htmlFor="title">title</label>
           
           <br />
           <br />
 
-          <input type="text" id="des"  ref={des}/>
+          <input type="text" id="des"  ref={des} required/>
           <br />
           <label htmlFor="des">description</label>
           
