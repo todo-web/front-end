@@ -11,9 +11,11 @@ import "./styles/todo.css"
 export default function Home() {
   let [posts_v, posts_c] = useState<Array<{t: string|undefined, d: string|undefined}>>([{t: "title", d: "asdf"}])
   let [modal_v, modal_c] = useState<boolean>(false)
+  let [height_v, height_c] = useState<number>(0)
   let [title, des] = [ useRef<HTMLInputElement>(null),  useRef<HTMLInputElement>(null)]
   useEffect(() => {
     console.log("reload")
+    height_c(window.outerHeight)
   })
   return (
     <>
@@ -28,11 +30,27 @@ export default function Home() {
       </Flex>
       <Box
         position="fixed"
-        width="100%"
-        bgColor=""
-        height={`${window.outerHeight}px`}
-        display={modal_v? "block": "none"}
+        w="100%"
+        h={`${height_v}px`}
+        display={modal_v? "flex": "none"}
+        alignItems="center"
+        justifyContent="center"
+        
+        top="0"
+        left="0"
+        zIndex="5"
+
       >
+        <Box
+        position="absolute"
+        zIndex="-10" 
+        w="100%"
+        h="100%"
+
+        backdropFilter="blur(10px)"
+        bgColor="#00000050"
+        onClick={() => {modal_c(!modal_v)}}
+        ></Box>
         <form action="" onSubmit={(e) => {
           e.preventDefault()
           
@@ -42,8 +60,18 @@ export default function Home() {
         }}>
           <input type="text" id="title" ref={title}/>
           <br />
+          <label htmlFor="title">title</label>
+          
+          <br />
+          <br />
+
           <input type="text" id="des"  ref={des}/>
           <br />
+          <label htmlFor="des">description</label>
+          
+          <br />
+          <br />
+
           <input type="submit" value="submit" />
         </form>
       </Box>

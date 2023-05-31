@@ -18,6 +18,7 @@
     transition: all .5s;
     cursor: pointer;
     transition-timing-function:  cubic-bezier(0, -0.14, 0, 2.16);
+    z-index: 100;
 }
 
 #push:hover{
@@ -62,13 +63,13 @@ article > img{
 article > h1{
     font-size: medium;
     position: relative;
-    z-index: 10;
+    z-index: 1;
     padding-top: 10px;
     text-indent:  45px;
 }
 article > section{
     position: relative;
-    z-index: 10;
+    z-index: 0;
     color: var(--fc);
     opacity: .8;
     word-wrap: break-word;
@@ -97,3 +98,17 @@ article > section{
     background-color: #ddd;
     border-radius: 100px;
 }
+
+
+
+form{
+    background-color: #fff;
+    padding: 60px 50px;
+}
+
+input[type="text"]{
+    height: 30px;
+    width: 250px;
+}
+
+/* label */
