@@ -1,0 +1,88 @@
+#push{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    margin: 30px;
+    display: flex;
+    align-items: center;
+    font-size: 40px;
+    font-weight: 900;
+    justify-content: center;
+    background-color: #51bc23;
+    color: #fff;
+    border-radius: 100%;
+
+    box-shadow: 0 0 10px #ddd;
+    transition: all .5s;
+    cursor: pointer;
+    transition-timing-function:  cubic-bezier(0, -0.14, 0, 2.16);
+}
+
+#push:hover{
+    box-shadow: 0 0 15px #ddd;
+    transform: scale(1.1) rotate(90deg);
+    filter: brightness(1.1);
+}
+#push:active{
+    transform: scale(.9) rotate(90deg);
+    filter: brightness(1.1);
+}
+
+body{
+    margin: 50px;
+    background-image: url("https://raw.githubusercontent.com/5-23/todo/main/assets/todo_bg.svg");
+    background-size: 20px;
+}
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+article{
+    animation-name: intro;
+    animation-duration: .5s;
+    animation-timing-function:  cubic-bezier(0, -0.14, 0, 1.5);
+    width: 200px;
+    height: 200px;
+    color: var(--fc);
+}
+
+article > img{
+    position: absolute;
+    user-select: none;
+    width: 200px;
+    z-index: 0;
+}
+article > h1{
+    font-size: medium;
+    position: relative;
+    z-index: 10;
+    padding-top: 10px;
+    text-indent:  45px;
+}
+article > section{
+    position: relative;
+    z-index: 10;
+    color: var(--fc);
+    opacity: .8;
+    word-wrap: break-word;
+    padding: 10px;
+}
+
+
+@keyframes intro {
+    0%{
+        opacity: 0;
+        transform: scale(0);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
