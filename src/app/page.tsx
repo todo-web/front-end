@@ -4,12 +4,14 @@ import { Box, Flex } from '@chakra-ui/react'
 import Image from 'next/image'
 import Post from './comps/post'
 import Posts from './comps/posts'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 
 import "./styles/todo.css"
 export default function Home() {
-  let [posts_v, posts_c] = useState<Array<{t: string, d: string}>>([{t: "title", d: "asdf"}])
+  let [posts_v, posts_c] = useState<Array<{t: string|undefined, d: string|undefined}>>([{t: "title", d: "asdf"}])
+  let [modal_v, modal_c] = useState<boolean>(false)
+  let [title, des] = [ useRef<HTMLInputElement>(null),  useRef<HTMLInputElement>(null)]
   useEffect(() => {
     console.log("reload")
   })
@@ -24,24 +26,35 @@ export default function Home() {
       >
         <Posts arr={posts_v}></Posts>
       </Flex>
+      <Box
+        position="fixed"
+        width="100%"
+        bgColor=""
+        height={`${window.outerHeight}px`}
+        display={modal_v? "block": "none"}
+      >
+        <form action="" onSubmit={(e) => {
+          e.preventDefault()
+          
+          let a = [...posts_v]
+          a.push({t: title.current?.value, d: des.current?.value})
+          posts_c(a)
+        }}>
+          <input type="text" id="title" ref={title}/>
+          <br />
+          <input type="text" id="des"  ref={des}/>
+          <br />
+          <input type="submit" value="submit" />
+        </form>
+      </Box>
 
       <Box id="push" onClick={() => {
-        let a = [...posts_v]
-        a.push({t: "title", d: "asdf"})
-        posts_c(a)
+        modal_c(!modal_v)
       }}
-
-      // position={'fixed'}
-      // bottom="10px"
-      // right="10px"
-      // borderRadius="100%"
-      // width="40px"
-      // height="40px"
-      // bgColor="#ddd"
-
       
       ><img src="./add.svg" alt="+" width={"100%"}/></Box>
-  
+
+
     </>
   )
 }

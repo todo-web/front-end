@@ -1,6 +1,6 @@
 import Post from "./post";
 
-export default function Posts(props: {arr: Array<{t: string, d: string}>}){
+export default function Posts(props: {arr: Array<{t: string|undefined, d: undefined}>}){
     return(
         <>
             {

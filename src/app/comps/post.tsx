@@ -29,7 +29,7 @@
 
 // customElements.define("my-post", Post);
 // import './post.css'
-export default function(props: {t: String, d: String, ok: number}){
+export default function(props: {t: string|undefined, d: string|undefined, ok: number}){
     let postOK = "./post_ok.svg"
     let post = "./post.svg"
     return (
