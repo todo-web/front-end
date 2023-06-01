@@ -1,6 +1,7 @@
 *{
-    --success: #a3d887;
-    --non-success: #e8de64;
+    /* --success: #a3d887; */
+    --success: #81ce57;
+    --non-success: #6169FF;
 }
 #push{
     position: fixed;
@@ -123,8 +124,6 @@ input[type="text"]:valid{
     outline: solid var(--success) 3px;
 }
 
-
-
 input#title:valid ~ label[for="title"]{
     transform: translateX(5px) translateY(-44.5px) scale(.8);
     color: var(--success);
@@ -132,6 +131,7 @@ input#title:valid ~ label[for="title"]{
 
 input#title:focus ~ label[for="title"]{
     transform: translateX(5px) translateY(-44.5px) scale(.8);
+    color: var(--non-success);
 }
 
 
@@ -142,17 +142,19 @@ input#des:valid ~ label[for="des"]{
 
 input#des:focus ~ label[for="des"]{
     transform: translateX(5px) translateY(-44.5px) scale(.8);
+    color: var(--non-success);
 }
+
 
 form > label{
     padding: 0 5px;
     position: absolute;
-    color: var(--non-success);
+    color: #ddd;
     transition: all .3s;
     border-radius: 50px;
     background-color: #fff;
     transform: translateX(5px) translateY(-27px);
-
+    
 }
 
 input[type="submit"]{
@@ -165,7 +167,6 @@ input[type="submit"]{
     transition: all .5s;
     transition-timing-function:  cubic-bezier(0, -0.14, 0, 2.16);
 }
-
 
 input[type="submit"]:hover{
     transform: scale(1.05);

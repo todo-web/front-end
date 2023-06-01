@@ -39,7 +39,7 @@ export default function Home() {
         top="0"
         left="0"
         zIndex="5"
-
+        
       >
         <Box
         position="absolute"
@@ -57,7 +57,6 @@ export default function Home() {
           let a = [...posts_v]
           a.push({t: title.current?.value, d: des.current?.value})
           posts_c(a)
-          // title.current.val
         }}>
           <Center
             fontSize="30px"

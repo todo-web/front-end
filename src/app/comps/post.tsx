@@ -1,40 +1,23 @@
+import { Box } from "@chakra-ui/react"
+import { useState } from "react"
 
-// tUp = 0.5
-// t = tUp
-
-// class Post extends HTMLElement {
-    
-//     connectedCallback() {
-//         let title = this.getAttribute('t');
-//         let discription = this.getAttribute('d');
-//         let ok = this.getAttributeNames('ok').indexOf("ok") != -1;
-
-//         /*
-//             fc: font color
-//             bc: background color
-//         */
-//         let postOK = "https://raw.githubusercontent.com/5-23/todo/main/assets/post_ok.svg"
-//         let post = "https://raw.githubusercontent.com/5-23/todo/main/assets/post.svg"
-
-//         this.innerHTML = `
-//             <article style="${ok? '--fc: #000': '--fc: #000'}; --t: ${t += tUp}s">
-//                 <img src="${ok? postOK: post}"></img>
-//                 <h1>${title}</h1>
-//                 <section>${discription}</section>
-//             </article>
-//         `
-//     }
-
-// }
-
-// customElements.define("my-post", Post);
-// import './post.css'
-export default function(props: {t: string|undefined, d: string|undefined, ok: number}){
+export default function(props: {t: string|undefined, d: string|undefined, ok: number, id: number}){
     let postOK = "./post_ok.svg"
     let post = "./post.svg"
+    let [display_v, display_c] = useState<string>("none")
     return (
-        <article>
+        <article onMouseLeave={() => {display_c("none")}} onMouseMove={() =>{display_c("block")}}>
             <img src={props.ok? postOK: post}></img>
+            <Box
+            pos="absolute"
+            w="20px"
+            h="20px"
+            m="10px 0 0 170px"
+
+            bgColor="#ddd"
+            id="edit"
+            display={display_v}
+            ></Box>
             <h1>{props.t}</h1>
             <section>{props.d}</section>
         </article>
