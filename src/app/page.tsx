@@ -5,9 +5,13 @@ import Image from 'next/image'
 import Post from './comps/post'
 import Posts from './comps/posts'
 import { useEffect, useRef, useState } from 'react'
-
-
+import Head from './comps/head'
 import "./styles/todo.css"
+
+
+
+
+
 export default function Home() {
   let [posts_v, posts_c] = useState<Array<{t: string|undefined, d: string|undefined}>>([{t: "title", d: "asdf"}])
   let [modal_v, modal_c] = useState<boolean>(false)
@@ -19,7 +23,7 @@ export default function Home() {
   })
   return (
     <>
-  
+      <Head></Head>
       <Flex
         alignItems     = "center"
         justifyContent = "center"
