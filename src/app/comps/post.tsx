@@ -19,10 +19,10 @@ export default function(props: {t: string|undefined, d: string|undefined, ok: nu
                 opacity={opacity_v}
                 src="edit.svg"
                 cursor="pointer"
-                transition="all.5s"
+                transition="all .5s"
                 transitionTimingFunction="cubic-bezier(0, -0.14, 0, 2.16)"
                 _hover={{
-                    transform: "translateY(-5px)"
+                    transform: "translateY(-1px)"
                 }}
                 onClick={() => {console.log("click")}}
             />
