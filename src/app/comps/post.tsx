@@ -4,21 +4,27 @@ import { useState } from "react"
 export default function(props: {t: string|undefined, d: string|undefined, ok: number, id: number}){
     let postOK = "./post_ok.svg"
     let post = "./post.svg"
-    let [display_v, display_c] = useState<string>("none")
+    let [opacity_v, opacity_c] = useState<number>(0);
     return (
-        <article onMouseLeave={() => {display_c("none")}} onMouseMove={() =>{display_c("block")}}>
-            <img src={props.ok? postOK: post}></img>
+        <article onMouseLeave={() => {opacity_c(0)}} onMouseMove={() =>{opacity_c(1)}}>
+            <img id="post-img" src={props.ok? postOK: post}></img>
             <Image
-            pos="absolute"
-            w="30px"
-            h="30px"
-            m="10px 0 0 160px"
-            bgColor="#ddd"
-            id="edit"
-            display={display_v}
-            src="edit.svg"
-            cursor="pointer"
-            onClick={() => {console.log("click")}}
+                pos="absolute"
+                zIndex={10}
+                w="30px"
+                h="30px"
+                m="10px 0 0 160px"
+                bgColor="#00000000"
+                id="edit"
+                opacity={opacity_v}
+                src="edit.svg"
+                cursor="pointer"
+                transition="all.5s"
+                transitionTimingFunction="cubic-bezier(0, -0.14, 0, 2.16)"
+                _hover={{
+                    transform: "translateY(-5px)"
+                }}
+                onClick={() => {console.log("click")}}
             />
             <h1>{props.t}</h1>
             <section>{props.d}</section>

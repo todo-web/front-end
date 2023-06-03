@@ -59,7 +59,7 @@ article{
     color: var(--fc);
 }
 
-article > img{
+article > img#post-img{
     position: absolute;
     user-select: none;
     width: 200px;
