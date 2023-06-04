@@ -1,7 +1,19 @@
 import { Box, Image } from "@chakra-ui/react"
-import { useState } from "react"
+import { Dispatch, SetStateAction, useState } from "react"
 
-export default function(props: {t: string|undefined, d: string|undefined, ok: number, id: number}){
+
+type Props = {
+    t: string|undefined,
+    d: string|undefined,
+    ok: number,
+    id: number
+    modal: {
+        change: Dispatch<SetStateAction<boolean>>
+    }
+}
+
+
+export default function(props: Props){
     let postOK = "./post_ok.svg"
     let post = "./post.svg"
     let [opacity_v, opacity_c] = useState<number>(0);
@@ -24,7 +36,7 @@ export default function(props: {t: string|undefined, d: string|undefined, ok: nu
                 _hover={{
                     transform: "translateY(-1px)"
                 }}
-                onClick={() => {console.log("click")}}
+                onClick={() => {props.modal.change(true)}}
             />
             <h1>{props.t}</h1>
             <section>{props.d}</section>
